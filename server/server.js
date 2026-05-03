@@ -42,7 +42,7 @@ if (env === 'production') {
   const distPath = path.join(__dirname, '../client/dist');
   console.log('Serving static files from:', distPath);
   app.use(express.static(distPath));
-  app.get('*', (req, res) => {
+  app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
   });
 } else {
