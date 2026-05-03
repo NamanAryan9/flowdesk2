@@ -1,8 +1,13 @@
 # Dependencies
 node_modules/
+client/node_modules/
 dist/
+client/dist/
+
+# Env files
 .env
 .env.local
+server/.env
 .env.development.local
 .env.test.local
 .env.production.local
