@@ -17,8 +17,9 @@ const app = express();
 connectDB();
 
 // Middleware
+const env = (process.env.NODE_ENV || '').trim();
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
+  origin: env === 'production'
     ? process.env.CLIENT_URL
     : 'http://localhost:5173',
   credentials: true
