@@ -33,8 +33,9 @@ app.use('/api', taskRoutes); // Handles /projects/:id/tasks and /tasks/:id
 app.use('/api/dashboard', dashboardRoutes);
 
 // Static file serving in production
-console.log('NODE_ENV:', process.env.NODE_ENV);
-if (process.env.NODE_ENV === 'production') {
+const env = (process.env.NODE_ENV || '').trim();
+console.log('NODE_ENV:', env);
+if (env === 'production') {
   const distPath = path.join(__dirname, '../client/dist');
   console.log('Serving static files from:', distPath);
   app.use(express.static(distPath));
