@@ -2,7 +2,7 @@
   "name": "task-manager",
   "version": "1.0.0",
   "scripts": {
-    "postinstall": "npm install --prefix client",
+    "postinstall": "npm install --prefix client --legacy-peer-deps",
     "build": "npm run build --prefix client",
     "start": "node server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
