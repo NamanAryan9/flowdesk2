@@ -54,7 +54,7 @@ const Projects = () => {
         {user?.role === 'admin' && (
           <button
             onClick={() => setShowModal(true)}
-            className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors shadow-sm"
+            className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors shadow-sm"
           >
             <Plus className="w-5 h-5" />
             <span>New Project</span>
@@ -64,9 +64,9 @@ const Projects = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {Array.isArray(projects) && projects.map((project) => (
-          <div key={project._id} className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-indigo-300 transition-colors group">
+          <div key={project._id} className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-emerald-300 transition-colors group">
             <div className="flex justify-between items-start mb-4">
-              <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
+              <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
                 <FolderKanban className="w-6 h-6" />
               </div>
               {user?.role === 'admin' && (
@@ -76,7 +76,7 @@ const Projects = () => {
               )}
             </div>
             <Link to={`/projects/${project._id}`}>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 hover:text-indigo-600 transition-colors">{project.name}</h3>
+              <h3 className="text-lg font-bold text-slate-900 mb-2 hover:text-emerald-600 transition-colors">{project.name}</h3>
             </Link>
             <p className="text-slate-600 text-sm mb-6 line-clamp-2">{project.description || 'No description provided.'}</p>
             <div className="flex items-center gap-2 text-slate-500 text-sm">
@@ -102,7 +102,7 @@ const Projects = () => {
                 <input
                   type="text"
                   required
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
                 />
@@ -110,7 +110,7 @@ const Projects = () => {
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
                 <textarea
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
                   rows="3"
                   value={newDesc}
                   onChange={(e) => setNewDesc(e.target.value)}
@@ -126,7 +126,7 @@ const Projects = () => {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="flex-1 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                 >
                   Create
                 </button>

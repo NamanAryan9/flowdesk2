@@ -29,9 +29,9 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
         <div className="text-center">
-          <CheckSquare className="mx-auto h-12 w-12 text-indigo-600" />
+          <CheckSquare className="mx-auto h-12 w-12 text-emerald-600" />
           <h2 className="mt-6 text-3xl font-extrabold text-slate-900">Welcome Back</h2>
-          <p className="mt-2 text-sm text-slate-600">Sign in to manage your tasks</p>
+          <p className="mt-2 text-sm text-slate-600">Sign in to manage your tasks with Flowdesk</p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {errors.length > 0 && (
@@ -47,7 +47,7 @@ const Login = () => {
               <input
                 type="email"
                 required
-                className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -57,7 +57,7 @@ const Login = () => {
               <input
                 type="password"
                 required
-                className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -65,14 +65,14 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors"
           >
             Sign In
           </button>
         </form>
         <p className="mt-4 text-center text-sm text-slate-600">
           Don't have an account?{' '}
-          <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">Sign up</Link>
+          <Link to="/signup" className="font-medium text-emerald-600 hover:text-emerald-500">Sign up</Link>
         </p>
       </div>
     </div>

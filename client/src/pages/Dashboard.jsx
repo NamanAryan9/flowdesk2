@@ -44,7 +44,7 @@ const Dashboard = () => {
       <h1 className="text-2xl font-bold text-slate-900 mb-8">Dashboard</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        <StatCard title="Total Tasks" value={stats.total} icon={ListTodo} color="indigo" />
+        <StatCard title="Total Tasks" value={stats.total} icon={ListTodo} color="emerald" />
         <StatCard title="Completed" value={stats.done} icon={CheckCircle2} color="green" />
         <StatCard title="Overdue" value={stats.overdue} icon={AlertCircle} color="red" />
         <StatCard title="Due This Week" value={stats.dueThisWeek} icon={Calendar} color="amber" />
