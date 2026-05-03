@@ -2,7 +2,10 @@
 aptPkgs = ["libatomic1"]
 
 [phases.install]
-cmds = ["npm install", "npm install --prefix client --legacy-peer-deps"]
+cmds = [
+  "npm install",
+  "npm install --prefix client --legacy-peer-deps"
+]
 
 [phases.build]
 cmds = ["npm run build"]
