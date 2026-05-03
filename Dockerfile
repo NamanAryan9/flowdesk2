@@ -9,17 +9,14 @@ RUN apt-get update && apt-get install -y \
 # Set the working directory
 WORKDIR /app
 
-# Copy root package files
-COPY package*.json ./
-
-# Install root dependencies
-RUN npm install
-
-# Copy the rest of the application
+# Copy the entire application first
+# This ensures that postinstall scripts (like client install) have access to their files
 COPY . .
 
-# Install client dependencies and build the client
-RUN npm install --prefix client --legacy-peer-deps
+# Install all dependencies (root and client via postinstall)
+RUN npm install --legacy-peer-deps
+
+# Build the client
 RUN npm run build --prefix client
 
 # Expose the port the app runs on
