@@ -33,11 +33,16 @@ app.use('/api', taskRoutes); // Handles /projects/:id/tasks and /tasks/:id
 app.use('/api/dashboard', dashboardRoutes);
 
 // Static file serving in production
+console.log('NODE_ENV:', process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
+  const distPath = path.join(__dirname, '../client/dist');
+  console.log('Serving static files from:', distPath);
+  app.use(express.static(distPath));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    res.sendFile(path.join(distPath, 'index.html'));
   });
+} else {
+  console.log('Not in production mode, skipping static file serving.');
 }
 
 // Global Error Handler
