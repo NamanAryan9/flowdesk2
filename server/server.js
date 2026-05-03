@@ -13,9 +13,6 @@ const path = require('path');
 
 const app = express();
 
-// Connect to Database
-connectDB();
-
 // Middleware
 const env = (process.env.NODE_ENV || '').trim();
 app.use(cors({
@@ -39,7 +36,7 @@ if (env === 'production') {
   const distPath = path.join(__dirname, '../client/dist');
   console.log('Serving static files from:', distPath);
   app.use(express.static(distPath));
-  app.use((req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
   });
 } else {
@@ -54,8 +51,13 @@ app.use((err, req, res, next) => {
   });
 });
 
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+// Connect to Database and Start Server
+connectDB().then(() => {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+  });
+}).catch(err => {
+  console.error('Failed to start server due to DB connection error:', err.message);
+  process.exit(1);
 });
