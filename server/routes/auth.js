@@ -120,8 +120,13 @@ router.post('/logout', (req, res) => {
 });
 
 // @route   GET /api/auth/me
-router.get('/me', verifyToken, (req, res) => {
-  res.json(req.user);
+router.get('/me', verifyToken, async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user._id).select('-passwordHash');
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
 });
 
 // @route   GET /api/auth/users
