@@ -34,7 +34,6 @@ app.use('/api', taskRoutes); // Handles /projects/:id/tasks and /tasks/:id
 app.use('/api/dashboard', dashboardRoutes);
 
 // Static file serving in production
-const env = (process.env.NODE_ENV || '').trim();
 console.log('NODE_ENV:', env);
 if (env === 'production') {
   const distPath = path.join(__dirname, '../client/dist');
