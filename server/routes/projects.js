@@ -42,7 +42,12 @@ router.post('/', [
 // @route   GET /api/projects
 router.get('/', verifyToken, async (req, res, next) => {
   try {
-    const projects = await Project.find({ members: req.user._id }).populate('members', 'name email role');
+    let query = {};
+    // If not admin, only show projects where the user is a member
+    if (req.user.role !== 'admin') {
+      query.members = req.user._id;
+    }
+    const projects = await Project.find(query).populate('members', 'name email role');
     res.json(projects);
   } catch (error) {
     next(error);
