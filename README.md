@@ -1,4 +1,4 @@
-# Team Task Manager (Full-Stack MERN)
+# Flowtask (Full-Stack MERN)
 
 A high-performance, responsive Team Task Management application designed for efficient project coordination and task tracking. Built with the MERN stack (MongoDB, Express, React, Node.js), featuring a modern UI and secure role-based access control.
 
@@ -31,7 +31,7 @@ A high-performance, responsive Team Task Management application designed for eff
 ### 1. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/azure1716/-Team-Task-Manager.git
+git clone https://github.com/NamanAryan9/flowdesk2.git
 cd -Team-Task-Manager
 
 # Install root, server, and client dependencies
