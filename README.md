@@ -1,61 +1,103 @@
-# Team Task Manager (MERN)
+# 🚀 Team Task Manager (Full-Stack MERN)
 
-A functional Team Task Manager built with React, Node.js, Express, and MongoDB.
+A high-performance, responsive Team Task Management application designed for efficient project coordination and task tracking. Built with the **MERN stack** (MongoDB, Express, React, Node.js), featuring a modern glassmorphic UI and secure role-based access control.
 
-## Features
-- **Auth**: Secure JWT-based authentication using httpOnly cookies.
-- **Role-Based Access**: Admins can create projects and tasks; Members can view and update task statuses.
-- **Dashboard**: Real-time stats for tasks (Total, Done, Overdue, Due This Week).
-- **Projects**: Project-based task organization and team management.
+---
 
-## Prerequisites
-- Node.js (v16+)
-- MongoDB (Running locally or a URI)
+## ✨ Key Features
 
-## Getting Started
+- **🔐 Secure Authentication**: JWT-based auth with `httpOnly` cookies for maximum security and CSRF protection.
+- **👥 Role-Based Access Control (RBAC)**: 
+  - **Admins**: Can create projects, invite members, and manage all tasks.
+  - **Members**: Can view projects they belong to and update statuses of assigned tasks.
+- **📊 Real-time Dashboard**: Visual metrics for:
+  - Total Tasks
+  - Completion Rate
+  - Overdue Alerts
+  - Tasks due within the current week
+- **📂 Project Management**: Organize tasks by project, assign specific team members, and track progress globally.
+- **⚡ Modern UI/UX**: Built with **Tailwind CSS** and **Lucide Icons** for a premium, responsive experience.
 
-### 1. Clone & Install
+---
+
+## 🛠️ Technology Stack
+
+- **Frontend**: React 19, Vite, Tailwind CSS, Axios, Lucide-React.
+- **Backend**: Node.js, Express.js.
+- **Database**: MongoDB (Atlas Cloud).
+- **Security**: JWT (JSON Web Tokens), Bcrypt.js, Cookie-Parser.
+- **Deployment**: Railway (Production Ready).
+
+---
+
+## 🚦 Getting Started
+
+### 1. Installation
 ```bash
-# Install server dependencies
-cd server
-npm install
+# Clone the repository
+git clone https://github.com/azure1716/-Team-Task-Manager.git
+cd -Team-Task-Manager
 
-# Install client dependencies
-cd ../client
-npm install
+# Install root, server, and client dependencies
+npm run install-all
 ```
 
-### 2. Environment Variables
-Create a `.env` file in the `server` directory (see `.env.example`):
+### 2. Environment Setup
+Create a `.env` file in the `/server` directory:
 ```env
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/taskmanager
-JWT_SECRET=your_secret_key
+MONGO_URI=your_mongodb_atlas_uri
+JWT_SECRET=your_signing_secret
+CLIENT_URL=http://localhost:5173
 NODE_ENV=development
 ```
 
-### 3. Seed Database
-Run the seed script to create initial data (Admin: admin@demo.com / admin123, Member: member@demo.com / member123):
+### 3. Database Initialization
+Seed the database with professional demo data:
 ```bash
-cd server
-npm run seed
+node server/seed.js
 ```
 
-### 4. Run Application
-Open two terminals:
-
-**Terminal 1 (Backend):**
+### 4. Running Locally
 ```bash
-cd server
+# Run both frontend and backend concurrently
 npm run dev
 ```
 
-**Terminal 2 (Frontend):**
-```bash
-cd client
-npm run dev
+---
+
+## 🌐 Production Deployment (Railway)
+
+This project is configured for seamless deployment on Railway as a **Single Service**.
+
+1. **Static Serving**: The Express server automatically serves the React production build (`client/dist`) when `NODE_ENV=production`.
+2. **Environment Variables**: Ensure `CLIENT_URL` is set to your live Railway domain to enable secure cookie handling.
+3. **Build Script**: The root `package.json` contains a unified `build` script for zero-config CI/CD.
+
+---
+
+## 🧪 Admin Credentials (Demo)
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Admin** | `admin@demo.com` | `admin123` |
+| **Member** | `member@demo.com` | `member123` |
+
+---
+
+## 📁 Project Structure
+
+```text
+├── client/          # React frontend (Vite)
+├── server/          # Node.js Express backend
+│   ├── models/      # Mongoose Schemas
+│   ├── routes/      # API Endpoints
+│   ├── middleware/  # Auth & Role validation
+│   └── seed.js      # Database seeding script
+├── package.json     # Root monorepo configuration
+└── README.md        # This file
 ```
 
-## Testing Roles
-- **Admin**: Login with `admin@demo.com` / `admin123`. You can create projects, add members, and assign tasks.
-- **Member**: Login with `member@demo.com` / `member123`. You can see tasks assigned to you across projects and update their status.
+---
+
+*Developed with ❤️ as part of the Full-Stack MERN Assignment.*
