@@ -13,6 +13,9 @@ const path = require('path');
 
 const app = express();
 
+console.log('Available Env Vars:', Object.keys(process.env).filter(key => !key.includes('SECRET') && !key.includes('PASSWORD')));
+console.log('MONGO_URI exists:', !!process.env.MONGO_URI);
+
 // Middleware
 const env = (process.env.NODE_ENV || '').trim();
 app.use(cors({
