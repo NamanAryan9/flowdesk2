@@ -1,7 +1,9 @@
 import api from '../api/api';
+import { useNavigate } from 'react-router-dom';
 import { Clock, CheckCircle2, Circle, Trash2 } from 'lucide-react';
 
 const TaskTable = ({ tasks, isAdmin, onUpdate }) => {
+  const navigate = useNavigate();
   const updateStatus = async (taskId, newStatus) => {
     try {
       await api.patch(`/tasks/${taskId}`, { status: newStatus });
@@ -47,7 +49,11 @@ const TaskTable = ({ tasks, isAdmin, onUpdate }) => {
         </thead>
         <tbody className="bg-white divide-y divide-slate-200">
           {tasks.map((task) => (
-            <tr key={task._id} className="hover:bg-slate-50 transition-colors">
+            <tr 
+              key={task._id} 
+              onClick={() => navigate(`/projects/${task.project?._id || task.project}`)}
+              className="hover:bg-slate-50 transition-colors cursor-pointer group"
+            >
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="text-sm font-medium text-slate-900">{task.title}</div>
                 <div className="text-xs text-slate-500">{task.description}</div>
@@ -64,7 +70,7 @@ const TaskTable = ({ tasks, isAdmin, onUpdate }) => {
               <td className="px-6 py-4 whitespace-nowrap">
                 {getStatusBadge(task.status)}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium" onClick={(e) => e.stopPropagation()}>
                 <div className="flex justify-end gap-2">
                   <select
                     value={task.status}
