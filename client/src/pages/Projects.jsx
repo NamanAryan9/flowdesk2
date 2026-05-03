@@ -14,7 +14,7 @@ const Projects = () => {
   const fetchProjects = async () => {
     try {
       const res = await api.get('/projects');
-      setProjects(res.data);
+      setProjects(Array.isArray(res.data) ? res.data : []);
     } catch (error) {
       console.error('Failed to fetch projects');
     }
@@ -63,7 +63,7 @@ const Projects = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
+        {Array.isArray(projects) && projects.map((project) => (
           <div key={project._id} className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-indigo-300 transition-colors group">
             <div className="flex justify-between items-start mb-4">
               <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
@@ -85,7 +85,7 @@ const Projects = () => {
             </div>
           </div>
         ))}
-        {projects.length === 0 && (
+        {Array.isArray(projects) && projects.length === 0 && (
           <div className="col-span-full py-20 text-center text-slate-500 bg-white rounded-xl border-2 border-dashed border-slate-200">
             No projects found. Create one to get started.
           </div>

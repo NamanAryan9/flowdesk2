@@ -21,9 +21,10 @@ const Dashboard = () => {
       
       // For dashboard we show all user tasks across projects
       // We need to fetch tasks for each project
-      const taskPromises = projectsRes.data.map(p => api.get(`/projects/${p._id}/tasks`));
+      const projects = Array.isArray(projectsRes.data) ? projectsRes.data : [];
+      const taskPromises = projects.map(p => api.get(`/projects/${p._id}/tasks`));
       const taskResults = await Promise.all(taskPromises);
-      const allTasks = taskResults.flatMap(res => res.data);
+      const allTasks = taskResults.flatMap(res => (Array.isArray(res.data) ? res.data : []));
       setTasks(allTasks);
     } catch (error) {
       console.error('Error fetching dashboard data', error);
